@@ -4,17 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Muhammad Afif — Visual Storyteller specializing in video, photo, and AI-driven creative work.">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
   <title>Muhammad Afif - Visual Storyteller | Video, Photo & AI</title>
+  
+  <!-- Performance: Preconnect to external resources -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  
+  <!-- Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   <link rel="preload" href="https://res.cloudinary.com/de2tlhnd6/video/upload/f_auto,q_auto/v1778043163/maharani_hmioqh.mp4" as="video">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="h-full bg-black text-white antialiased">
-
+  
   <!-- LOADING SCREEN -->
   <div id="loader" class="fixed inset-0 bg-black z-[999] flex items-center justify-center">
     <div class="text-center">
@@ -26,7 +35,7 @@
   </div>
 
   <!-- CUSTOM CURSOR -->
-  <div id="cursor" class="fixed w-6 h-6 bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full z-[1000] pointer-events-none mix-blend-difference hidden"></div>
+  <div id="cursor" class="fixed w-6 h-6 bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full z-[1000] pointer-events-none mix-blend-screen hidden md:block"></div>
   <div id="cursor-text" class="fixed text-xs font-black text-white/80 z-[1001] pointer-events-none opacity-0">VIEW</div>
 
   <div class="liquid-bg"></div>
@@ -34,7 +43,9 @@
   <!-- NAV -->
   <nav id="main-nav" class="fixed top-0 w-full z-50 px-4 md:px-6 py-4 transition-all duration-500">
     <div class="max-w-6xl mx-auto glass flex items-center justify-between px-6 md:px-8 py-3.5">
-      <a href="#home" class="text-2xl font-black tracking-tighter uppercase cursor-pointer hover:scale-105 transition-transform duration-300">AFIF<span class="text-violet-500">.</span></a>
+      <a href="#home" class="text-2xl font-black tracking-tighter uppercase cursor-pointer hover:scale-105 transition-transform duration-300 group">
+        AFIF<span class="text-violet-500 group-hover:text-cyan-400 transition-colors">.</span>
+      </a>
 
       <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
         <a href="#home" class="nav-link">Home</a>
@@ -44,48 +55,48 @@
         <a href="#rate-card" class="nav-link">Rate Card</a>
       </div>
 
-      <a href="#contact" class="hidden md:block bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black hover:bg-cyan-400 transition-all duration-300 shadow-xl">HIRE ME</a>
+      <a href="#contact" class="hidden md:block bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black hover:bg-cyan-400 transition-all duration-300 shadow-xl hover:shadow-2xl">HIRE ME</a>
 
-      <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden text-2xl p-2 glass rounded-xl">
+      <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden text-2xl p-2 glass rounded-xl hover:bg-white/10 transition-all duration-300">
         <i data-lucide="menu" class="w-5 h-5"></i>
       </button>
     </div>
 
     <div id="mobile-menu" class="md:hidden glass backdrop-blur-xl px-8 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-out">
       <div class="flex flex-col gap-2 text-[12px] font-bold uppercase tracking-widest text-gray-300 py-4">
-        <a href="#home" class="nav-link py-3 hover:text-cyan-400 transition">Home</a>
-        <a href="#about" class="nav-link py-3 hover:text-cyan-400 transition">About</a>
-        <a href="#work" class="nav-link py-3 hover:text-cyan-400 transition">Works</a>
-        <a href="#experience" class="nav-link py-3 hover:text-cyan-400 transition">Experience</a>
-        <a href="#rate-card" class="nav-link py-3 hover:text-cyan-400 transition">Rate Card</a>
-        <a href="#contact" class="py-3 text-cyan-400 font-black border-t border-cyan-400/20 pt-4 mt-2">HIRE ME →</a>
+        <a href="#home" class="nav-link py-3 hover:text-cyan-400 transition-colors duration-300">Home</a>
+        <a href="#about" class="nav-link py-3 hover:text-cyan-400 transition-colors duration-300">About</a>
+        <a href="#work" class="nav-link py-3 hover:text-cyan-400 transition-colors duration-300">Works</a>
+        <a href="#experience" class="nav-link py-3 hover:text-cyan-400 transition-colors duration-300">Experience</a>
+        <a href="#rate-card" class="nav-link py-3 hover:text-cyan-400 transition-colors duration-300">Rate Card</a>
+        <a href="#contact" class="py-3 text-cyan-400 font-black border-t border-cyan-400/20 pt-4 mt-2 hover:text-white transition-colors duration-300">HIRE ME →</a>
       </div>
     </div>
   </nav>
 
   <main>
     <!-- HERO -->
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-      <video class="absolute inset-0 w-full h-full object-cover opacity-30" autoplay muted loop playsinline preload="auto">
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-20">
+      <video class="absolute inset-0 w-full h-full object-cover opacity-25" autoplay muted loop playsinline preload="auto">
         <source src="https://res.cloudinary.com/de2tlhnd6/video/upload/f_auto,q_auto/v1778043163/maharani_hmioqh.mp4" type="video/mp4">
       </video>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black"></div>
 
       <div class="relative z-10 max-w-5xl reveal">
-        <span class="inline-block text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400 mb-6 glass px-4 py-2 rounded-full">Visual Storyteller · Indonesia</span>
+        <span class="inline-block text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400 mb-6 glass px-4 py-2 rounded-full hover:scale-105 transition-transform duration-300">Visual Storyteller · Indonesia</span>
         <h1 class="font-display text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] mb-6">
           <span class="block">Muhammad</span>
           <span class="block bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">Afif</span>
         </h1>
         <p class="text-base md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Crafting cinematic stories through <span class="text-white font-semibold">video</span>, <span class="text-white font-semibold">photography</span>, and <span class="text-white font-semibold">AI-driven</span> visuals — built for brands that want to feel.
+          Crafting cinematic stories through <span class="text-white font-semibold">video</span>, <span class="text-white font-semibold">photography</span>, and <span class="text-white font-semibold">AI-driven visuals</span>.
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
-          <a href="#work" class="group bg-white text-black px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition-all duration-300 flex items-center gap-2 shadow-2xl">
+          <a href="#work" class="group bg-white text-black px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-2xl hover:-translate-y-1">
             View Work
-            <i data-lucide="arrow-down-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></i>
+            <i data-lucide="arrow-down-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></i>
           </a>
-          <a href="#contact" class="glass px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+          <a href="#contact" class="glass px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-2xl hover:-translate-y-1">
             Start Project
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </a>
@@ -113,25 +124,34 @@
             Five years in. Hundreds of stories told. Still chasing the shot that gives people goosebumps.
           </p>
           <div class="grid grid-cols-3 gap-4">
-            <div class="glass p-5 rounded-2xl text-center"><div class="text-3xl font-black text-cyan-400">120+</div><div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Projects</div></div>
-            <div class="glass p-5 rounded-2xl text-center"><div class="text-3xl font-black text-violet-400">5y</div><div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Experience</div></div>
-            <div class="glass p-5 rounded-2xl text-center"><div class="text-3xl font-black text-fuchsia-400">40+</div><div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Clients</div></div>
+            <div class="glass p-5 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-black text-cyan-400">120+</div>
+              <div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Projects</div>
+            </div>
+            <div class="glass p-5 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-black text-violet-400">5y</div>
+              <div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Experience</div>
+            </div>
+            <div class="glass p-5 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-black text-fuchsia-400">40+</div>
+              <div class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Clients</div>
+            </div>
           </div>
         </div>
 
         <div class="reveal relative">
-          <div class="aspect-[4/5] glass rounded-3xl overflow-hidden relative group">
+          <div class="aspect-[4/5] glass rounded-3xl overflow-hidden relative group hover:shadow-2xl transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-br from-violet-600/40 via-transparent to-cyan-400/30"></div>
             <div class="absolute inset-0 flex items-center justify-center">
-              <i data-lucide="camera" class="w-32 h-32 text-white/20 group-hover:scale-110 transition-transform duration-700"></i>
+              <i data-lucide="camera" class="w-32 h-32 text-white/20 group-hover:scale-110 group-hover:text-white/40 transition-all duration-500"></i>
             </div>
             <div class="absolute bottom-6 left-6 right-6">
               <div class="text-[10px] uppercase tracking-[0.4em] text-cyan-400 mb-2">Toolkit</div>
               <div class="flex flex-wrap gap-2 text-xs">
-                <span class="glass px-3 py-1.5 rounded-full">Sony FX3</span>
-                <span class="glass px-3 py-1.5 rounded-full">DaVinci</span>
-                <span class="glass px-3 py-1.5 rounded-full">Runway</span>
-                <span class="glass px-3 py-1.5 rounded-full">Midjourney</span>
+                <span class="glass px-3 py-1.5 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default">Sony FX3</span>
+                <span class="glass px-3 py-1.5 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default">DaVinci</span>
+                <span class="glass px-3 py-1.5 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default">Runway</span>
+                <span class="glass px-3 py-1.5 rounded-full hover:bg-white/10 transition-all duration-300 cursor-default">Midjourney</span>
               </div>
             </div>
           </div>
@@ -152,12 +172,12 @@
             <div class="aspect-[16/9] glass rounded-3xl overflow-hidden relative">
               <div class="absolute inset-0 bg-gradient-to-br from-violet-600 to-fuchsia-600 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="film" class="w-24 h-24 text-white/40"></i>
+                <i data-lucide="film" class="w-24 h-24 text-white/40 group-hover:scale-110 group-hover:text-white/60 transition-all duration-500"></i>
               </div>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end p-8">
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.4em] text-cyan-400">Wedding Cinematic</span>
-                  <h3 class="text-3xl md:text-4xl font-black uppercase mt-2">Maharani × Aditya</h3>
+                  <h3 class="text-3xl md:text-4xl font-black uppercase mt-2 group-hover:text-cyan-300 transition-colors duration-300">Maharani × Aditya</h3>
                 </div>
               </div>
             </div>
@@ -167,12 +187,12 @@
             <div class="aspect-square glass rounded-3xl overflow-hidden relative">
               <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="image" class="w-20 h-20 text-white/40"></i>
+                <i data-lucide="image" class="w-20 h-20 text-white/40 group-hover:scale-110 group-hover:text-white/60 transition-all duration-500"></i>
               </div>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-end p-6">
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.4em] text-cyan-300">Brand Campaign</span>
-                  <h3 class="text-2xl font-black uppercase mt-2">Senja Coffee Co.</h3>
+                  <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-cyan-300 transition-colors duration-300">Senja Coffee Co.</h3>
                 </div>
               </div>
             </div>
@@ -182,12 +202,12 @@
             <div class="aspect-square glass rounded-3xl overflow-hidden relative">
               <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-pink-600 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="sparkles" class="w-20 h-20 text-white/40"></i>
+                <i data-lucide="sparkles" class="w-20 h-20 text-white/40 group-hover:scale-110 group-hover:text-white/60 transition-all duration-500"></i>
               </div>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-end p-6">
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.4em] text-yellow-300">AI Visuals</span>
-                  <h3 class="text-2xl font-black uppercase mt-2">Dreamstate Series</h3>
+                  <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-yellow-300 transition-colors duration-300">Dreamstate Series</h3>
                 </div>
               </div>
             </div>
@@ -197,12 +217,12 @@
             <div class="aspect-square glass rounded-3xl overflow-hidden relative">
               <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-700 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="video" class="w-20 h-20 text-white/40"></i>
+                <i data-lucide="video" class="w-20 h-20 text-white/40 group-hover:scale-110 group-hover:text-white/60 transition-all duration-500"></i>
               </div>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-end p-6">
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.4em] text-emerald-300">Documentary</span>
-                  <h3 class="text-2xl font-black uppercase mt-2">Tanah Air</h3>
+                  <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-emerald-300 transition-colors duration-300">Tanah Air</h3>
                 </div>
               </div>
             </div>
@@ -212,12 +232,12 @@
             <div class="aspect-square glass rounded-3xl overflow-hidden relative">
               <div class="absolute inset-0 bg-gradient-to-br from-rose-500 to-purple-700 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="aperture" class="w-20 h-20 text-white/40"></i>
+                <i data-lucide="aperture" class="w-20 h-20 text-white/40 group-hover:scale-110 group-hover:text-white/60 transition-all duration-500"></i>
               </div>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-end p-6">
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.4em] text-rose-300">Photography</span>
-                  <h3 class="text-2xl font-black uppercase mt-2">Editorial Vol. 04</h3>
+                  <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-rose-300 transition-colors duration-300">Editorial Vol. 04</h3>
                 </div>
               </div>
             </div>
@@ -235,7 +255,7 @@
         </div>
 
         <div class="space-y-6">
-          <div class="timeline-item glass p-8 rounded-2xl">
+          <div class="timeline-item glass p-8 rounded-2xl hover:translate-y-[-4px] hover:shadow-2xl transition-all duration-500">
             <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
               <h3 class="text-xl md:text-2xl font-black uppercase">Lead Visual Director</h3>
               <span class="text-[10px] uppercase tracking-widest text-cyan-400">2024 — Now</span>
@@ -244,7 +264,7 @@
             <p class="text-gray-400 text-sm leading-relaxed">Directing brand films and AI-augmented campaigns for clients across SEA. Building a small studio practice rooted in story.</p>
           </div>
 
-          <div class="timeline-item glass p-8 rounded-2xl">
+          <div class="timeline-item glass p-8 rounded-2xl hover:translate-y-[-4px] hover:shadow-2xl transition-all duration-500">
             <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
               <h3 class="text-xl md:text-2xl font-black uppercase">Senior Videographer</h3>
               <span class="text-[10px] uppercase tracking-widest text-cyan-400">2022 — 2024</span>
@@ -253,7 +273,7 @@
             <p class="text-gray-400 text-sm leading-relaxed">Led wedding cinematic team — 60+ productions delivered, mentoring two junior shooters and refining the studio's signature look.</p>
           </div>
 
-          <div class="timeline-item glass p-8 rounded-2xl">
+          <div class="timeline-item glass p-8 rounded-2xl hover:translate-y-[-4px] hover:shadow-2xl transition-all duration-500">
             <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
               <h3 class="text-xl md:text-2xl font-black uppercase">Content Creator</h3>
               <span class="text-[10px] uppercase tracking-widest text-cyan-400">2020 — 2022</span>
@@ -274,47 +294,47 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="reveal glass p-8 rounded-3xl flex flex-col">
+          <div class="reveal glass p-8 rounded-3xl flex flex-col hover:translate-y-[-4px] transition-all duration-500">
             <div class="text-[10px] uppercase tracking-[0.4em] text-cyan-400 mb-4">Essentials</div>
             <h3 class="text-3xl font-black uppercase mb-2">Spark</h3>
             <div class="text-4xl font-black mb-1">Rp 3.5<span class="text-base text-gray-500">jt</span></div>
             <p class="text-xs text-gray-500 mb-6">Half-day shoot</p>
             <ul class="space-y-3 text-sm text-gray-400 mb-8 flex-1">
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>4-hour shoot</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>1 edited reel (60s)</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>20 retouched stills</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>1 revision round</li>
+              <li class="flex gap-2 hover:text-cyan-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>4-hour shoot</li>
+              <li class="flex gap-2 hover:text-cyan-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>1 edited reel (60s)</li>
+              <li class="flex gap-2 hover:text-cyan-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>20 retouched stills</li>
+              <li class="flex gap-2 hover:text-cyan-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>1 revision round</li>
             </ul>
             <a href="#contact" class="glass rounded-full py-3 text-center text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all duration-300">Choose</a>
           </div>
 
-          <div class="reveal glass p-8 rounded-3xl flex flex-col border-2 border-violet-500/40 relative scale-[1.02]">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-600 to-cyan-400 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Most Booked</div>
+          <div class="reveal glass p-8 rounded-3xl flex flex-col border-2 border-violet-500/40 relative scale-[1.02] hover:scale-105 transition-transform duration-500">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-600 to-cyan-400 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Recommended</div>
             <div class="text-[10px] uppercase tracking-[0.4em] text-violet-400 mb-4">Signature</div>
             <h3 class="text-3xl font-black uppercase mb-2">Story</h3>
             <div class="text-4xl font-black mb-1">Rp 8<span class="text-base text-gray-500">jt</span></div>
             <p class="text-xs text-gray-500 mb-6">Full-day production</p>
             <ul class="space-y-3 text-sm text-gray-400 mb-8 flex-1">
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>10-hour shoot</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>1 cinematic film (3-4 min)</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>3 social cutdowns</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>50 retouched stills</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>2 revision rounds</li>
+              <li class="flex gap-2 hover:text-violet-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>10-hour shoot</li>
+              <li class="flex gap-2 hover:text-violet-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>1 cinematic film (3-4 min)</li>
+              <li class="flex gap-2 hover:text-violet-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>3 social cutdowns</li>
+              <li class="flex gap-2 hover:text-violet-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>50 retouched stills</li>
+              <li class="flex gap-2 hover:text-violet-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-violet-400 mt-0.5 shrink-0"></i>2 revision rounds</li>
             </ul>
-            <a href="#contact" class="bg-gradient-to-r from-violet-600 to-cyan-400 rounded-full py-3 text-center text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform duration-300">Choose</a>
+            <a href="#contact" class="bg-gradient-to-r from-violet-600 to-cyan-400 rounded-full py-3 text-center text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform duration-300 text-white shadow-lg hover:shadow-2xl">Book Now</a>
           </div>
 
-          <div class="reveal glass p-8 rounded-3xl flex flex-col">
+          <div class="reveal glass p-8 rounded-3xl flex flex-col hover:translate-y-[-4px] transition-all duration-500">
             <div class="text-[10px] uppercase tracking-[0.4em] text-fuchsia-400 mb-4">Bespoke</div>
             <h3 class="text-3xl font-black uppercase mb-2">Cinema</h3>
             <div class="text-4xl font-black mb-1">Rp 20<span class="text-base text-gray-500">jt+</span></div>
             <p class="text-xs text-gray-500 mb-6">Multi-day campaign</p>
             <ul class="space-y-3 text-sm text-gray-400 mb-8 flex-1">
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Multi-day shoot + crew</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Hero film + asset pack</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>AI-augmented visuals</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Storyboard + treatment</li>
-              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Unlimited revisions</li>
+              <li class="flex gap-2 hover:text-fuchsia-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Multi-day shoot + crew</li>
+              <li class="flex gap-2 hover:text-fuchsia-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Hero film + asset pack</li>
+              <li class="flex gap-2 hover:text-fuchsia-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>AI-augmented visuals</li>
+              <li class="flex gap-2 hover:text-fuchsia-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Storyboard + treatment</li>
+              <li class="flex gap-2 hover:text-fuchsia-400 transition-colors duration-300"><i data-lucide="check" class="w-4 h-4 text-fuchsia-400 mt-0.5 shrink-0"></i>Unlimited revisions</li>
             </ul>
             <a href="#contact" class="glass rounded-full py-3 text-center text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all duration-300">Choose</a>
           </div>
@@ -329,7 +349,7 @@
           Let's make<br><span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent italic font-light">something real</span>.
         </h2>
         <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">Available for commissions, collaborations, and the occasional impossible idea.</p>
-        <a href="#contact" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition-all duration-300 shadow-2xl">
+        <a href="#contact" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
           Start a project
           <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
         </a>
@@ -340,16 +360,16 @@
   <!-- CONTACT MODAL -->
   <div id="contact-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-6">
     <div class="glass max-w-md w-full p-8 md:p-10 rounded-3xl relative">
-      <button id="close-modal" aria-label="Close" class="absolute -top-4 -right-4 w-12 h-12 bg-violet-600 text-white rounded-2xl flex items-center justify-center hover:bg-violet-700 transition">
+      <button id="close-modal" aria-label="Close" class="absolute -top-4 -right-4 w-12 h-12 bg-violet-600 text-white rounded-2xl flex items-center justify-center hover:bg-violet-700 transition-all duration-300 shadow-lg hover:shadow-2xl">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-center">Start Project</h3>
       <form id="contact-form" class="space-y-4">
-        <input type="text" name="name" placeholder="Name" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" required>
-        <input type="email" name="email" placeholder="Email" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" required>
-        <input type="text" name="project" placeholder="Project Type" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" required>
-        <textarea name="message" rows="4" placeholder="Tell me about your project..." class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition resize-none" required></textarea>
-        <button type="submit" class="w-full bg-gradient-to-r from-violet-600 to-cyan-400 text-white py-4 rounded-xl font-black uppercase tracking-wider hover:scale-[1.02] transition-transform duration-300 shadow-xl">Send Message</button>
+        <input type="text" name="name" placeholder="Name" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300" required>
+        <input type="email" name="email" placeholder="Email" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300" required>
+        <input type="text" name="project" placeholder="Project Type" class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300" required>
+        <textarea name="message" rows="4" placeholder="Tell me about your project..." class="w-full p-4 glass rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 resize-none" required></textarea>
+        <button type="submit" class="w-full bg-gradient-to-r from-violet-600 to-cyan-400 text-white py-4 rounded-xl font-black uppercase tracking-wider hover:scale-[1.02] transition-transform duration-300 shadow-lg hover:shadow-2xl">Send Inquiry</button>
       </form>
     </div>
   </div>
